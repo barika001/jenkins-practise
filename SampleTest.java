@@ -1,32 +1,33 @@
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+public class Calculator {
+    public static void main(String[] args) {
+        double num1 = 10.5;
+        double num2 = 5.2;
+        char operator = '+';
+        double result;
 
-public class SampleTest {
-    
-    @Test
-    public void testAddition() {
-        Calculator calc = new Calculator();
-        int result = calc.add(3, 5);
-        assertEquals(8, result, "Addition operation failed");
-    }
-    
-    @Test
-    public void testDivision() {
-        Calculator calc = new Calculator();
-        double result = calc.divide(10, 2);
-        assertEquals(5.0, result, "Division operation failed");
-    }
-}
-
-class Calculator {
-    public int add(int a, int b) {
-        return a + b;
-    }
-    
-    public double divide(int dividend, int divisor) {
-        if (divisor == 0) {
-            throw new IllegalArgumentException("Cannot divide by zero");
+        switch(operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                if(num2 != 0)
+                    result = num1 / num2;
+                else {
+                    System.out.println("Error! Division by zero.");
+                    return;
+                }
+                break;
+            default:
+                System.out.println("Error! Invalid operator.");
+                return;
         }
-        return (double) dividend / divisor;
+
+        System.out.println("Result: " + result);
     }
 }
